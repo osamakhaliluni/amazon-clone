@@ -1,0 +1,46 @@
+.item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid rgb(211, 211, 211);
+}
+
+.item img {
+    flex: 2;
+    height: 150px;
+    width: 150px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.info {
+    flex: 6;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    flex-direction: column;
+    align-items: start;
+    height: 130px;
+}
+
+.quantity {
+    border: 2px solid #ffd814;
+    border-radius: 30px;
+    padding: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100px;
+}
+
+.quantity i {
+    font-size: 16px;
+}
