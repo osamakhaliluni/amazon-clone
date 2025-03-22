@@ -4,8 +4,10 @@ import styles from "./Product.module.css";
 import StarIcon from "@mui/icons-material/Star";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarHalfIcon from "@mui/icons-material/StarHalf";
+import { useCart } from "../context/cart/CartContext";
 
-function Product({ title, image, price, rating }) {
+function Product({ id, title, image, price, rating }) {
+  const { addItem } = useCart();
   let stars = [];
   for (let i = 0; i < rating; i++) {
     stars.push(<StarIcon key={i} />);
@@ -21,7 +23,9 @@ function Product({ title, image, price, rating }) {
         </p>
       </div>
       <div className={styles.rating}>{stars}</div>
-      <button className={styles.addBtn}>Add to cart</button>
+      <button className={styles.addBtn} onClick={addItem({ id, quantity: 1 })}>
+        Add to cart
+      </button>
     </div>
   );
 }
