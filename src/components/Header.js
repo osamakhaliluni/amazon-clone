@@ -4,8 +4,10 @@ import styles from "./Header.module.css";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link } from "react-router-dom";
+import { useCart } from "../context/cart/CartContext";
 
 export default function Header() {
+  const { totalQuantity } = useCart();
   return (
     <div className={styles.header}>
       <Link to="/">
@@ -35,7 +37,7 @@ export default function Header() {
         <Link to="/checkout">
           <div className={styles.option}>
             <span className={`${styles.optionLineTwo} ${styles.basketCount}`}>
-              0
+              {totalQuantity}
             </span>
             <ShoppingCartIcon />
           </div>

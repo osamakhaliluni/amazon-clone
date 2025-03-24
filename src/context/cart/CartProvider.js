@@ -3,12 +3,15 @@ import { CartContext } from "./CartContext";
 
 const CartProvider = ({ children }) => {
   const [items, setItems] = useState([]);
+  const [cartId, setCartId] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [addingProduct, setAddingProduct] = useState(false);
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const getCart = (id) => {
+    setCartId(id);
     setLoading(true);
     fetch(`https://dummyjson.com/carts/${id}`)
       .then(async (response) => {
@@ -27,7 +30,6 @@ const CartProvider = ({ children }) => {
           total: product.total,
         }));
         setItems(myProduct);
-        console.log(myProduct);
       })
       .catch((e) => {
         setError(true);
@@ -41,9 +43,35 @@ const CartProvider = ({ children }) => {
   useEffect(() => {
     getCart(5);
   }, []);
-  const addItem = (item) => {
-    // Add the product to the cart array
-    // Update the total price and total quantity
+  const addItem = ({ id, quantity }) => {
+    setAddingProduct(true);
+    fetch(`https://dummyjson.com/carts/${cartId}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        merge: true,
+        products: [
+          {
+            id,
+            quantity,
+          },
+        ],
+      }),
+    })
+      .then(async (response) => {
+        if (response.status !== 200) {
+          throw new Error(`Failed to add product to cart:${response.status}`);
+        }
+        getCart(cartId);
+      })
+      .catch((e) => {
+        console.error(e.message);
+        setError(true);
+        setErrorMessage(e.message);
+      })
+      .finally(() => {
+        setAddingProduct(false);
+      });
   };
   const removeItem = (itemId) => {
     // Remove the product from the cart array
@@ -53,9 +81,11 @@ const CartProvider = ({ children }) => {
     <CartContext.Provider
       value={{
         items,
+        cartId,
         totalPrice,
         totalQuantity,
         loading,
+        addingProduct,
         error,
         errorMessage,
         addItem,
