@@ -40,7 +40,7 @@ function Home() {
     <div className={styles.home}>
       <div className={styles.container}>
         <img className={styles.background} src={background} alt="" />
-        <div className={styles.row}>
+        <div className={styles.products}>
           {loading && <p>Loading products...</p>}
           {error && <p style={{ color: "red" }}>Error: {errorMessage}</p>}
           {!loading &&
