@@ -22,10 +22,12 @@ export default function Header() {
         <SearchIcon className={styles.searchIcon} />
       </div>
       <div className={styles.nav}>
-        <div className={styles.option}>
-          <span className={styles.optionLineOne}>Hello</span>
-          <span className={styles.optionLineTwo}>Sing in</span>
-        </div>
+        <Link to="/login">
+          <div className={styles.option}>
+            <span className={styles.optionLineOne}>Hello</span>
+            <span className={styles.optionLineTwo}>Sing in</span>
+          </div>
+        </Link>
         <div className={styles.option}>
           <span className={styles.optionLineOne}>Returns</span>
           <span className={styles.optionLineTwo}>Orders</span>

@@ -5,7 +5,7 @@ export const CartContext = createContext({
   cartId: null,
   totalPrice: 0,
   totalQuantity: 0,
-  addingProduct: false,
+  addingProduct: {},
   loading: false,
   error: false,
   errorMessage: "",

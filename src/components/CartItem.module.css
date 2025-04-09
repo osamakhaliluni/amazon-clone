@@ -46,3 +46,22 @@
     font-weight: 900;
     cursor: pointer;
 }
+
+.actions {
+    display: flex;
+    align-items: center;
+}
+
+.actions span {
+    margin: 0 10px;
+    border-left: 1px solid rgba(161, 161, 161, 0.431);
+    padding-left: 10px;
+    font-size: 12px;
+    color: #2162a1;
+    font-weight: 500;
+}
+
+.actions span:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

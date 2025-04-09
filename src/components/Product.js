@@ -27,7 +27,7 @@ function Product({ id, title, image, price, rating = 0 }) {
         </p>
       </div>
       <div className={styles.rating}>{stars}</div>
-      {addingProduct ? (
+      {addingProduct[id] ? (
         <div className={styles.loading}>
           <OrbitProgress
             color="#ffd814"

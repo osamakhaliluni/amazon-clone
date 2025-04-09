@@ -7,7 +7,7 @@ const CartProvider = ({ children }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [addingProduct, setAddingProduct] = useState(false);
+  const [addingProduct, setAddingProduct] = useState({});
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const getCart = (id) => {
@@ -44,7 +44,7 @@ const CartProvider = ({ children }) => {
     getCart(5);
   }, []);
   const addItem = ({ id, quantity }) => {
-    setAddingProduct(true);
+    setAddingProduct((prev) => ({ ...prev, [id]: true }));
     fetch(`https://dummyjson.com/carts/${cartId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -62,7 +62,7 @@ const CartProvider = ({ children }) => {
         if (response.status !== 200) {
           throw new Error(`Failed to add product to cart:${response.status}`);
         }
-        getCart(cartId);
+        // getCart(cartId);
       })
       .catch((e) => {
         console.error(e.message);
@@ -70,7 +70,7 @@ const CartProvider = ({ children }) => {
         setErrorMessage(e.message);
       })
       .finally(() => {
-        setAddingProduct(false);
+        setAddingProduct((prev) => ({ ...prev, [id]: false }));
       });
   };
   const removeItem = (itemId) => {
