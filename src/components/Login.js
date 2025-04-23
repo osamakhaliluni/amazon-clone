@@ -2,9 +2,16 @@ import React, { useState } from "react";
 import styles from "./login.module.css";
 import logo from "../images/login_logo.svg";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/auth/AuthContext";
 
 function Login() {
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { signIn, loggedIn } = useAuth();
+
+  if (loggedIn) {
+    window.location.href = "/";
+  }
   return (
     <div className={styles.login}>
       <Link to="/">
@@ -18,7 +25,20 @@ function Login() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         ></input>
-        <button className={styles.continueBtn}>Continue</button>
+        <h5>password</h5>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        ></input>
+        <button
+          className={styles.continueBtn}
+          onClick={() => {
+            signIn({ email, password });
+          }}
+        >
+          Continue
+        </button>
         <p>
           By continuing, you agree to FAKE AMAZON CLONE's Conditions of Use and
           Privacy Notice.
