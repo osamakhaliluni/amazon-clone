@@ -1,0 +1,57 @@
+.container {
+    width: 500px;
+    background-color: white;
+    border-radius: 2px;
+    color: black;
+    padding: 20px 30px;
+}
+
+.login {
+    text-align: center;
+    font-size: 12px;
+    border-bottom: rgba(128, 128, 128, 0.203) 1px solid;
+    padding-bottom: 10px;
+}
+
+button {
+    width: 50%;
+    height: 35px;
+    background-color: #ffd814;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.login span {
+    color: blue;
+    text-decoration: underline;
+}
+
+.bottom {
+    display: flex;
+    margin-top: 20px;
+}
+
+.bottom div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 50%;
+}
+
+.account {
+    border-left: 1px solid rgba(128, 128, 128, 0.203);
+    padding-left: 20px;
+}
+
+.bottom span {
+    color: black;
+    font-size: 14px;
+}
+
+.container span:hover {
+    text-decoration: underline;
+    color: #f08804;
+    cursor: pointer;
+}

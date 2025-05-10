@@ -11,6 +11,27 @@
     padding: 30px;
 }
 
+.errorMessage {
+    width: 400px;
+    border: #cc0c39 solid 2px;
+    border-left: 15px solid #cc0c39;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.errorMessage p {
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.errorIcon {
+    color: #cc0c39;
+}
+
 .title {
     font-weight: 600;
     margin-bottom: 20px;

@@ -16,8 +16,30 @@ a {
 
 .logo {
     width: 100px;
-    object-fit: contain;
+    object-fit: cover;
     margin: 25px;
+    height: 60px;
+    padding: 5px;
+}
+
+.logo:hover {
+    border: white 1px solid;
+    cursor: pointer;
+}
+
+.list {
+    position: relative;
+}
+
+.popup {
+    position: absolute;
+    top: 110%;
+    left: -250px;
+    display: none;
+}
+
+.list:hover .popup {
+    display: block;
 }
 
 .search {
@@ -53,10 +75,16 @@ a {
     width: fit-content;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     justify-content: center;
-    margin: 0 20px;
+    margin: 0 10px;
     color: white;
+    padding: 10px;
+}
+
+.option:hover {
+    border: white 1px solid;
+    cursor: pointer;
 }
 
 .optionLineOne {
